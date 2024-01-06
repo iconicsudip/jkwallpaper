@@ -1,0 +1,28 @@
+{
+  "cli": {
+    "version": ">= 5.9.3"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://wallhaven.cc/api/v1"
+      }
+    },
+    "test": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://wallhaven.cc/api/v1"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
