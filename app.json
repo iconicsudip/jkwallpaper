@@ -7,7 +7,7 @@
     "plugins": [
       "expo-router"
     ],
-    "name": "JK Wallpaper",
+    "name": "JJK Wallpaper",
     "slug": "wallpaper-app",
     "icon": "./assets/icon.png",
     "splash": {

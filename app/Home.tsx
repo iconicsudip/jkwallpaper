@@ -5,14 +5,16 @@ import Cateogries from '../components/Categories'
 import Wallpapers from '../components/Wallpapers'
 import { defaultStyle } from '../styles/default.style'
 import { useEffect, useState } from 'react'
-// import {AppOpenAd,BannerAd,TestIds} from 'react-native-google-mobile-ads';
+import {BannerAd,BannerAdSize,TestIds} from 'react-native-google-mobile-ads';
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-// const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-3334644125943779/7463536944';
+const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-3334644125943779/7463536944';
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All")
+  const {top} = useSafeAreaInsets()
   return (
-    <SafeAreaView
-      style={defaultStyle.containerWrapper}
+    <View
+      style={[defaultStyle.containerWrapper,{paddingTop:top}]}
     >
       <Stack.Screen
         options={{
@@ -20,15 +22,15 @@ export default function Home() {
           headerShown: false,
         }}
       />
-      <View style={defaultStyle.container}>
+      <View style={{flex:1}}>
         <SearchBar />
-        {/* <BannerAd
+        <BannerAd
           unitId={adUnitId}
-          size="SMART_BANNER"
+          size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
           requestOptions={{
             requestNonPersonalizedAdsOnly: true,
           }}
-        /> */}
+        />
         {/* <AdMobBanner
           bannerSize="fullBanner"
           adUnitID="ca-app-pub-3334644125943779/7463536944"
@@ -38,6 +40,6 @@ export default function Home() {
         {/* <Cateogries setSelectedCategory={setSelectedCategory}/> */}
         <Wallpapers selectedCategory={selectedCategory} />
       </View>
-    </SafeAreaView>
+    </View>
   )
 }

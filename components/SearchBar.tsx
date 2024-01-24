@@ -12,7 +12,7 @@ export default function SearchBar() {
         router.push('/WallpaperByQuery/""')
     }
   return (
-    <SafeAreaView>
+    <View style={{marginHorizontal:20,marginBottom:20}}>
         <TouchableOpacity style={searchBarStyle.searchBarWrapper} onPress={handleSearchPage}>
             <Text style={searchBarStyle.searchBarInput} >Search wallpaper here...</Text>
             <View style={searchBarStyle.searchBarIcon}>
@@ -20,6 +20,6 @@ export default function SearchBar() {
                 <Ionicons name="search" size={20} />
             </View>
         </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   )
 }

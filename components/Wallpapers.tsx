@@ -61,7 +61,7 @@ export default function Wallpapers({ selectedCategory }: T_WallpapersProps) {
         return <ActivityIndicator size={'small'} />;
     }
     return (
-        <View style={wallpapersStyle.wallpapersWrapper}>
+        <View style={[wallpapersStyle.wallpapersWrapper,{marginHorizontal:20,width:"auto"}]}>
             <FlatList
                 nestedScrollEnabled={true}
                 // onScrollEndDrag={fetchNextPage}

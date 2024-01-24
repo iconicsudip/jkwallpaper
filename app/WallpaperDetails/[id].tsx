@@ -5,7 +5,8 @@ import { getWallpaperById } from '../../api/wallpapers.api'
 import {defaultStyle} from '../../styles/default.style'
 import RelatedWallpapers from '../../components/RelatedWallpapers'
 import SwipeableDownloadButton from '../../components/SwipeableDownloadButton'
-
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads'
+const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-3334644125943779/7463536944';
 export default function WallpaperDetails() {
   const params = useGlobalSearchParams()
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -32,23 +33,32 @@ export default function WallpaperDetails() {
         data={wallpaper} // Add your data here
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={() => (
-          <View style={[defaultStyle.container,{marginTop:0,flex:1}]}>
-            <Image style={defaultStyle.wallpaper} source={{ uri: wallpaper.path }} />
-            {wallpaper?.name &&
-              <Text style={defaultStyle.wallpaperName}>{wallpaper.name}</Text>
-            }
-            {wallpaper?.tags && (
-              <View style={defaultStyle.categoriesContainer}>
-                <View style={defaultStyle.categories}>
-                  {wallpaper?.tags?.map((item: any) => (
-                    <Text style={defaultStyle.category} key={item.id}>
-                      {item.name}
-                    </Text>
-                  ))}
+          <View style={[,{marginTop:0,flex:1}]}>
+            <Image style={[defaultStyle.wallpaper, defaultStyle.container,{marginTop:0,width:"auto"}]} source={{ uri: wallpaper.path }} />
+            <BannerAd
+              unitId={adUnitId}
+              size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+              requestOptions={{
+                requestNonPersonalizedAdsOnly: true,
+              }}
+            />
+            <View style={[defaultStyle.container, { marginTop: 0,marginBottom:0 }]}>
+              {wallpaper?.name &&
+                <Text style={defaultStyle.wallpaperName}>{wallpaper.name}</Text>
+              }
+              {wallpaper?.tags && (
+                <View style={defaultStyle.categoriesContainer}>
+                  <View style={defaultStyle.categories}>
+                    {wallpaper?.tags?.map((item: any) => (
+                      <Text style={defaultStyle.category} key={item.id}>
+                        {item.name}
+                      </Text>
+                    ))}
+                  </View>
                 </View>
-              </View>
-            )}
-            <View>
+              )}
+            </View>
+            <View style={[defaultStyle.container,{marginTop:0}]}>
               <Text style={defaultStyle.relatedWallpapersTitle}>Related Wallpapers</Text>
               <Text style={defaultStyle.wallpaperDescription}>More wallpapers related to this category</Text>
             </View>

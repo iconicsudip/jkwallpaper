@@ -10,7 +10,6 @@ type T_WallpaperProps = {
 }
 
 export default function Wallpaper({ wallpaper }: T_WallpaperProps) {
-
   const router = useRouter();
   const handleWallpaperDetails = () => {
     router.push(`/WallpaperDetails/${wallpaper.id}`)
@@ -22,7 +21,7 @@ export default function Wallpaper({ wallpaper }: T_WallpaperProps) {
           {wallpaper.name}
         </Text>
       </LinearGradient>
-      {/* <Image style={wallpapersStyle.wallpaper} source={{ uri: wallpaper.thumbs.original }} /> */}
+      <Image style={wallpapersStyle.wallpaper} source={{ uri: wallpaper.thumbs.original }} />
     </TouchableOpacity>
   )
 }
