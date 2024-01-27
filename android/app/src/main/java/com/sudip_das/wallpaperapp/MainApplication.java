@@ -1,4 +1,4 @@
-package com.jjkwallpaper;
+package com.sudip_das.wallpaperapp;
 
 import android.app.Application;
 import android.content.res.Configuration;
