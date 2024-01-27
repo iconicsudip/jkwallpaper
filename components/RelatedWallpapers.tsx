@@ -85,7 +85,7 @@ export default function RelatedWallpapers({ currentWallpaper,selectedCategory }:
         return <ActivityIndicator size={'small'} />;
     }
     return (
-        <View style={wallpapersStyle.wallpapersWrapper}>
+        <View style={[wallpapersStyle.wallpapersWrapper,{paddingHorizontal:20}]}>
             <FlatList
                 nestedScrollEnabled={true}
                 // onScrollEndDrag={fetchNextPage}
